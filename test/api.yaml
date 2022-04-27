@@ -1,0 +1,41 @@
+openapi: 3.0.2
+info:
+  title: "API"
+  version: "1.0.0"
+  contact:
+    name: Суслова Анастасия
+    email: suslova@surfstudio.ru
+
+servers:
+  - url: https://someaddress.com
+    description: TODO заглушка, требуется поправить в будущем на реальный адрес. 
+
+components:
+  securitySchemes:
+    AuthApiKey:
+      description: Ключ авторизованного пользователя
+      type: apiKey
+      in: header
+      name: Authorization  
+
+
+security:
+  - AuthApiKey: []
+
+paths:
+  /course:
+    get:
+      summary: to fetch detail of a course
+      parameters:
+        - name: course_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200 ok response"
+          content:
+            application/json:
+              schema:
+                $ref: "models.yaml#/components/schemas/CartItem"
